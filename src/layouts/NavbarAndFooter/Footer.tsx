@@ -1,3 +1,6 @@
+import {Link} from "react-router-dom";
+import {ROUTES} from "../../properties";
+
 export const Footer = () => {
     return (
         <div className={"main-color"}>
@@ -5,14 +8,14 @@ export const Footer = () => {
                 <p className={"col-md-4 mb-0 text-white"}>Example Library App, Inc</p>
                 <ul className={"nav navbar-dark col-md-4 justify-content-end"}>
                     <li className={"nav-item"}>
-                        <a className={"nav-link px-2 text-white"} href={"#"}>
+                        <Link className={"nav-link px-2 text-white"} to={ROUTES.HOME}>
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li className={"nav-item"}>
-                        <a className={"nav-link px-2 text-white"} href={"#"}>
+                        <Link className={"nav-link px-2 text-white"} to={ROUTES.SEARCH}>
                             Search Books
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </footer>
