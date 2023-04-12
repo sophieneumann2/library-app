@@ -9,13 +9,15 @@ import {ROUTES} from "./properties";
 
 export const App = () => {
     return (
-        <div>
+        <div className={"d-flex flex-column min-vh-100"}>
             <Navbar/>
-            <Routes>
-                <Route path={ROUTES.BASE} element={<Navigate replace to={ROUTES.HOME} />} />
-                <Route path={ROUTES.HOME} element={<HomePage/>}/>
-                <Route path={ROUTES.SEARCH} element={<SearchBooksPage/>}/>
-            </Routes>
+            <div className={"flex-grow-1"}>
+                <Routes>
+                    <Route path={ROUTES.BASE} element={<Navigate replace to={ROUTES.HOME} />} />
+                    <Route path={ROUTES.HOME} element={<HomePage/>}/>
+                    <Route path={ROUTES.SEARCH} element={<SearchBooksPage/>}/>
+                </Routes>
+            </div>
             <Footer/>
         </div>
     );
