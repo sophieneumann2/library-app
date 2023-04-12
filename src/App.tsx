@@ -6,6 +6,7 @@ import {SearchBooksPage} from "./layouts/SearchBooksPage/SearchBooksPage";
 import {Route, Routes, Navigate} from "react-router-dom";
 import {HomePage} from "./layouts/HomePage/HomePage";
 import {ROUTES} from "./properties";
+import {BookCheckoutPage} from "./layouts/BookCheckoutPage/BookCheckoutPage";
 
 export const App = () => {
     return (
@@ -16,6 +17,7 @@ export const App = () => {
                     <Route path={ROUTES.BASE} element={<Navigate replace to={ROUTES.HOME} />} />
                     <Route path={ROUTES.HOME} element={<HomePage/>}/>
                     <Route path={ROUTES.SEARCH} element={<SearchBooksPage/>}/>
+                    <Route path={`${ROUTES.CHECKOUT}/:bookId`} element={<BookCheckoutPage/>}/>
                 </Routes>
             </div>
             <Footer/>
