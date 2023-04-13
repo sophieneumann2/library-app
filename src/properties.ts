@@ -1,6 +1,8 @@
 export const ROUTES = {
     BASE: "/",
-    HOME: "/home",
-    SEARCH: "/search",
     CHECKOUT: "/checkout",
+    HOME: "/home",
+    LOGIN: "/login",
+    LOGIN_CALLBACK: "/login/callback",
+    SEARCH: "/search",
 }
