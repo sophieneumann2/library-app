@@ -6,3 +6,7 @@ export const ROUTES = {
     LOGIN_CALLBACK: "/login/callback",
     SEARCH: "/search",
 }
+
+export const API_ROUTES = {
+    BASE: "http://localhost:8080/api",
+}

@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import BookModel from "../../../models/BookModel";
 import {SpinnerLoading} from "../../Utils/SpinnerLoading";
 import {Link} from "react-router-dom";
-import {ROUTES} from "../../../properties";
+import {API_ROUTES, ROUTES} from "../../../properties";
 
 export const Carousel = () => {
 
@@ -13,7 +13,7 @@ export const Carousel = () => {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            const baseUrl: string = "http://localhost:8080/api/books";
+            const baseUrl: string = `${API_ROUTES.BASE}/books`;
             const url: string = `${baseUrl}?page=0&size=9`;
 
             const response = await fetch(url);
