@@ -12,6 +12,8 @@ import {OktaAuth, toRelativeUrl} from "@okta/okta-auth-js"
 import {LoginCallback, Security} from "@okta/okta-react";
 import LoginWidget from "./auth/LoginWidget";
 import {ReviewListPage} from "./layouts/BookCheckoutPage/ReviewListPage/ReviewListPage";
+import {ShelfPage} from "./layouts/ShelfPage/ShelfPage";
+import {ProtectedRoute} from "./layouts/Utils/ProtectedRoute";
 
 const oktaAuth = new OktaAuth(oktaConfig)
 
@@ -40,6 +42,8 @@ export const App = () => {
                         <Route path={`${ROUTES.CHECKOUT}/:bookId`} element={<BookCheckoutPage/>}/>
                         <Route path={ROUTES.LOGIN} element={<LoginWidget config={oktaConfig}/>}/>
                         <Route path={ROUTES.LOGIN_CALLBACK} element={<LoginCallback/>}/>
+                        <Route path={ROUTES.SHELF} element={<ProtectedRoute
+                            redirectTo={ROUTES.LOGIN}><ShelfPage/></ProtectedRoute>}/>
                     </Routes>
                 </div>
                 <Footer/>

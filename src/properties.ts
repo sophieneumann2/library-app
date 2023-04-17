@@ -6,6 +6,7 @@ export const ROUTES = {
     LOGIN_CALLBACK: "/login/callback",
     REVIEW_LIST: "/reviewlist",
     SEARCH: "/search",
+    SHELF: "/shelf",
 }
 
 export const API_ROUTES = {
