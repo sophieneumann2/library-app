@@ -14,6 +14,7 @@ export const Loans = () => {
     // Current Loans
     const [shelfCurrentLoans, setShelfCurrentLoans] = useState<ShelfCurrentLoans[]>([]);
     const [isLoadingUserLoans, setIsLoadingUserLoans] = useState(true);
+    const [checkout, setCheckout] = useState(false);
 
     useEffect(() => {
         const fetchUserCurrentLoans = async () => {
@@ -31,7 +32,26 @@ export const Loans = () => {
                     throw new Error("Something went wrong!");
                 }
                 const shelfCurrentLoansResponseJson = await shelfCurrentLoansResponse.json();
-                setShelfCurrentLoans(shelfCurrentLoansResponseJson);
+                console.log("shelfCurrentLoansResponseJson");
+                console.log(shelfCurrentLoansResponseJson);
+                const formattedResponse: ShelfCurrentLoans[] = [];
+                shelfCurrentLoansResponseJson.map((shelfCurrentLoan: any) => {
+                    formattedResponse.push(
+                        {
+                            book: {
+                                id: shelfCurrentLoan.book.id,
+                                title: shelfCurrentLoan.book.title,
+                                description: shelfCurrentLoan.book.description,
+                                author: shelfCurrentLoan.book.author,
+                                copies: shelfCurrentLoan.book.copies,
+                                copiesAvailable: shelfCurrentLoan.book.copiesAvailable,
+                                category: shelfCurrentLoan.book.category,
+                                img: shelfCurrentLoan.book.image,
+                            },
+                            daysLeft: shelfCurrentLoan.daysLeft
+                        })
+                });
+                setShelfCurrentLoans(formattedResponse);
                 setIsLoadingUserLoans(false);
             }
         };
@@ -41,7 +61,7 @@ export const Loans = () => {
             setHttpError(error.message);
         })
         window.scrollTo(0, 0);
-    }, [authState]);
+    }, [authState, checkout]);
 
     if (isLoadingUserLoans) {
         return <SpinnerLoading/>
@@ -53,6 +73,22 @@ export const Loans = () => {
                 <p>{httpError}</p>
             </div>
         );
+    }
+
+    async function returnBook(bookId: number) {
+        const url = `${API_ROUTES.BASE}/books/secure/return?bookId=${bookId}`;
+        const requestOptions = {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                "Content-Type": "application/json"
+            }
+        };
+        const returnResponse = await fetch(url, requestOptions);
+        if (!returnResponse.ok) {
+            throw new Error("Something went wrong!");
+        }
+        setCheckout(!checkout)
     }
 
     return (
@@ -67,6 +103,7 @@ export const Loans = () => {
                                 <div className={"row mt-3 mb-3"}>
                                     <div className={"col-4 col-md-4 container"}>
                                         {shelfCurrentLoan.book?.img ?
+                                            /*TODO: fix image bug. correct image is not displayed.*/
                                             <img src={shelfCurrentLoan.book?.img} width={226} height={349}
                                                  alt={"Book"}/>
                                             :
@@ -105,7 +142,7 @@ export const Loans = () => {
                                     </div>
                                 </div>
                                 <hr/>
-                                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={false}/>
+                                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={false} returnBook={returnBook}/>
                             </div>
                         ))}
                     </>
@@ -163,7 +200,7 @@ export const Loans = () => {
                                     </div>
                                 </div>
                                 <hr/>
-                                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={true}/>
+                                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={true} returnBook={returnBook}/>
                             </div>
                         ))}
                     </>
