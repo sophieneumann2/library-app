@@ -3,6 +3,7 @@ import {useState} from "react";
 import {Navigate} from "react-router-dom";
 import {ROUTES} from "../../properties";
 import {AdminMessages} from "./components/AdminMessages";
+import {AddNewBook} from "./components/AddNewBook";
 
 export const ManageLibraryPage = () => {
 
@@ -55,7 +56,7 @@ export const ManageLibraryPage = () => {
                 </nav>
                 <div className={"tab-content"} id={"nav-tabContent"}>
                     <div className={"tab-pane fade show active"} id={"nav-add-book"} role={"tab-panel"}
-                         aria-labelledby={"nav-add-book-tab"}>Add new book
+                         aria-labelledby={"nav-add-book-tab"}><AddNewBook/>
                     </div>
                     <div className={"tab-pane fade"} id={"nav-quantity"} role={"tab-panel"}
                          aria-labelledby={"nav-quantity-tab"}>{changeQuantityOfBooksClick ? <>Change
