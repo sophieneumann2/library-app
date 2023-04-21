@@ -1,4 +1,5 @@
 export const ROUTES = {
+    ADMIN: "/admin",
     BASE: "/",
     CHECKOUT: "/checkout",
     HOME: "/home",
