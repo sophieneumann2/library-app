@@ -4,6 +4,7 @@ import {Navigate} from "react-router-dom";
 import {ROUTES} from "../../properties";
 import {AdminMessages} from "./components/AdminMessages";
 import {AddNewBook} from "./components/AddNewBook";
+import {ChangeQuantityOfBooks} from "./components/ChangeQuantityOfBooks";
 
 export const ManageLibraryPage = () => {
 
@@ -59,8 +60,8 @@ export const ManageLibraryPage = () => {
                          aria-labelledby={"nav-add-book-tab"}><AddNewBook/>
                     </div>
                     <div className={"tab-pane fade"} id={"nav-quantity"} role={"tab-panel"}
-                         aria-labelledby={"nav-quantity-tab"}>{changeQuantityOfBooksClick ? <>Change
-                        Quantity</> : <></>}
+                         aria-labelledby={"nav-quantity-tab"}>{changeQuantityOfBooksClick ?
+                        <ChangeQuantityOfBooks/> : <></>}
                     </div>
                     <div className={"tab-pane fade"} id={"nav-messages"} role={"tab-panel"}
                          aria-labelledby={"nav-messages-tab"}>{messagesClick ? <AdminMessages/> : <></>}

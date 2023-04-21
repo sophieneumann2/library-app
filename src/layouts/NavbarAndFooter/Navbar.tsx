@@ -36,6 +36,11 @@ export const Navbar = () => {
                                 <NavLink className={"nav-link"} to={ROUTES.SHELF}>Shelf</NavLink>
                             </li>
                             : null}
+                        {authState.isAuthenticated && authState.accessToken?.claims.userType === 'admin' ?
+                            <li className={"nav-item"}>
+                                <NavLink className={"nav-link"} to={ROUTES.ADMIN}>Admin</NavLink>
+                            </li>
+                            : null}
                     </ul>
                     <ul className={"navbar-nav ms-auto"}>
                         {authState.isAuthenticated ?
