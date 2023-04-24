@@ -1,6 +1,5 @@
 import {useOktaAuth} from "@okta/okta-react";
 import {useState} from "react";
-import {API_ROUTES} from "../../../properties";
 import AddBookRequest from "../../../models/AddBookRequest";
 
 export const AddNewBook = () => {
@@ -41,7 +40,7 @@ export const AddNewBook = () => {
     }
 
     async function submitNewBook() {
-        const url = `${API_ROUTES.BASE}/admin/secure/add/book`;
+        const url = `${process.env.REACT_APP_API}/admin/secure/add/book`;
         if (authState?.isAuthenticated && title !== '' && author !== '' && category !== 'Category' && description !== '' && copies > 0) {
             const book: AddBookRequest = new AddBookRequest(title, author, description, copies, category);
             book.img = selectedImage;

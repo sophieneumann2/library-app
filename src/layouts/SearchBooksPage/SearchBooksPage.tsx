@@ -3,7 +3,6 @@ import BookModel from "../../models/BookModel";
 import {SpinnerLoading} from "../Utils/SpinnerLoading";
 import {SearchBook} from "./components/SearchBook";
 import {Pagination} from "../Utils/Pagination";
-import {API_ROUTES} from "../../properties";
 
 export const SearchBooksPage = () => {
     const [books, setBooks] = useState<BookModel[]>([]);
@@ -19,7 +18,7 @@ export const SearchBooksPage = () => {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            const baseUrl: string = `${API_ROUTES.BASE}/books`;
+            const baseUrl: string = `${process.env.REACT_APP_API}/books`;
             let url: string = "";
 
             if (searchUrl === "") {

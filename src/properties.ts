@@ -10,7 +10,3 @@ export const ROUTES = {
     SEARCH: "/search",
     SHELF: "/shelf",
 }
-
-export const API_ROUTES = {
-    BASE: "http://localhost:8080/api",
-}

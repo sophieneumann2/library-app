@@ -24,3 +24,6 @@ yarn-error.log*
 
 #config data
 /src/lib/oktaConfig.ts
+.env
+localhost.conf
+/ssl-localhost

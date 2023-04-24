@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import BookModel from "../../../models/BookModel";
-import {API_ROUTES} from "../../../properties";
 import {SpinnerLoading} from "../../Utils/SpinnerLoading";
 import {Pagination} from "../../Utils/Pagination";
 import {ChangeQuantityOfBook} from "./ChangeQuantityOfBook";
@@ -19,7 +18,7 @@ export const ChangeQuantityOfBooks = () => {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            const baseUrl: string = `${API_ROUTES.BASE}/books?page=${currentPage - 1}&size=${booksPerPage}`;
+            const baseUrl: string = `${process.env.REACT_APP_API}/books?page=${currentPage - 1}&size=${booksPerPage}`;
 
             const response = await fetch(baseUrl);
 
