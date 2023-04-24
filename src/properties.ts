@@ -2,6 +2,7 @@ export const ROUTES = {
     ADMIN: "/admin",
     BASE: "/",
     CHECKOUT: "/checkout",
+    FEES: "/fees",
     HOME: "/home",
     LOGIN: "/login",
     LOGIN_CALLBACK: "/login/callback",

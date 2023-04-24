@@ -36,6 +36,11 @@ export const Navbar = () => {
                                 <NavLink className={"nav-link"} to={ROUTES.SHELF}>Shelf</NavLink>
                             </li>
                             : null}
+                        {authState.isAuthenticated ?
+                            <li className={"nav-item"}>
+                                <NavLink className={"nav-link"} to={ROUTES.FEES}>Pay fees</NavLink>
+                            </li>
+                            : null}
                         {authState.isAuthenticated && authState.accessToken?.claims.userType === 'admin' ?
                             <li className={"nav-item"}>
                                 <NavLink className={"nav-link"} to={ROUTES.ADMIN}>Admin</NavLink>
